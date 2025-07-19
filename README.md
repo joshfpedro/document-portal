@@ -26,18 +26,109 @@ This project implements a comprehensive RAG-based document portal with the follo
 
 ### Architecture Components
 
+```mermaid
+graph TD
+    A[Project: RAG-based Application] --> B[RAG Architecture]
+    B --> C[Development Phase]
+    B --> D[Deployment Phase]
+    
+    C --> E[Document Ingestion]
+    C --> F[Vector Store Creation]
+    C --> G[RAG Pipeline Development]
+    
+    D --> H[Doc-Portal]
+    
+    H --> I[📊 Analysis and Doc]
+    H --> J[🔍 Compare Documents]
+    H --> K[💬 Talk with Single Doc]
+    H --> L[🗣️ Talk with Multiple Documents]
+    
+    I --> M[Document Processing]
+    I --> N[Key Insights Extraction]
+    
+    J --> O[Side-by-Side Analysis]
+    J --> P[Similarity Detection]
+    
+    K --> Q[Interactive Q&A]
+    K --> R[Contextual Responses]
+    
+    L --> S[Cross-Document Queries]
+    L --> T[Knowledge Base Chat]
+    
+    M --> U[LangChain]
+    N --> U
+    O --> U
+    P --> U
+    Q --> U
+    R --> U
+    S --> U
+    T --> U
+    
+    U --> V[LangSmith Monitoring]
+    U --> W[Streamlit Interface]
+    
+    style A fill:#e1f5fe
+    style H fill:#f3e5f5
+    style U fill:#e8f5e8
+    style V fill:#fff3e0
+    style W fill:#fce4ec
 ```
-Project → RAG-based Application
-    ↓
-RAG Architecture
-    ↓
-┌─── Dev ────────── Deployment ───┐
-│                                │
-└─── Doc-Portal ─────────────────┘
-    ├── 1. Analysis and Doc
-    ├── 2. Compare Document  
-    ├── 3. Talk with Single Doc
-    └── 4. Talk with Multiple Documents
+
+#### System Flow Overview
+
+```mermaid
+flowchart LR
+    subgraph "Input Layer"
+        A[📄 Documents] 
+        B[👤 User Queries]
+    end
+    
+    subgraph "Processing Layer"
+        C[Document Parser]
+        D[Vector Database]
+        E[RAG Engine]
+        F[LLM Model]
+    end
+    
+    subgraph "Application Layer"
+        G[Analysis Module]
+        H[Comparison Module]
+        I[Chat Module]
+    end
+    
+    subgraph "Interface Layer"
+        J[Streamlit UI]
+        K[API Endpoints]
+    end
+    
+    subgraph "Monitoring Layer"
+        L[LangSmith]
+        M[Performance Metrics]
+    end
+    
+    A --> C
+    C --> D
+    B --> E
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    F --> I
+    G --> J
+    H --> J
+    I --> J
+    J --> K
+    E --> L
+    F --> L
+    L --> M
+    
+    style A fill:#e3f2fd
+    style B fill:#e3f2fd
+    style D fill:#f1f8e9
+    style E fill:#fff3e0
+    style F fill:#fce4ec
+    style J fill:#f3e5f5
+    style L fill:#e8eaf6
 ```
 
 ## Setup
@@ -73,6 +164,29 @@ RAG Architecture
 ### Running the Application
 ```bash
 streamlit run app.py
+```
+
+### User Journey
+
+```mermaid
+journey
+    title Document Portal User Journey
+    section Document Upload
+      Upload Documents: 5: User
+      Document Processing: 3: System
+      Vector Embedding: 3: System
+    section Analysis Mode
+      Select Analysis: 5: User
+      Generate Insights: 4: System
+      View Results: 5: User
+    section Chat Mode
+      Ask Questions: 5: User
+      RAG Processing: 4: System
+      Get Responses: 5: User
+    section Comparison Mode
+      Select Documents: 5: User
+      Compare Analysis: 4: System
+      View Differences: 5: User
 ```
 
 ### Features Available
@@ -116,6 +230,41 @@ document-portal/
 ## Development
 
 ### RAG Pipeline Development
+
+```mermaid
+graph LR
+    subgraph "Data Pipeline"
+        A[Raw Documents] --> B[Document Loader]
+        B --> C[Text Splitter]
+        C --> D[Embedding Model]
+        D --> E[Vector Store]
+    end
+    
+    subgraph "RAG Pipeline"
+        F[User Query] --> G[Query Embedding]
+        G --> H[Similarity Search]
+        E --> H
+        H --> I[Context Retrieval]
+        I --> J[Prompt Template]
+        J --> K[LLM]
+        K --> L[Response]
+    end
+    
+    subgraph "Evaluation"
+        M[Ground Truth] --> N[RAG Evaluation]
+        L --> N
+        N --> O[Metrics]
+        O --> P[Pipeline Optimization]
+        P --> J
+    end
+    
+    style A fill:#e3f2fd
+    style E fill:#f1f8e9
+    style K fill:#fce4ec
+    style L fill:#e8f5e8
+    style O fill:#fff3e0
+```
+
 The development phase focuses on:
 - Document ingestion and preprocessing
 - Vector store creation and management
