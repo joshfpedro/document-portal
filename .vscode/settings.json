@@ -1,0 +1,11 @@
+{
+    "python.defaultInterpreter": "./env/python.exe",
+    "python.pythonPath": "./env/python.exe",
+    "jupyter.jupyterServerType": "local",
+    "jupyter.kernels.filter": [
+        {
+            "path": "./env/python.exe",
+            "type": "pythonEnvironment"
+        }
+    ]
+}
