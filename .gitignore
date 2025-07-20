@@ -1,3 +1,4 @@
 env
 .env
-document-portal.egg-info
+document_portal.egg-info
+.vscode
