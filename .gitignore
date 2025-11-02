@@ -2,3 +2,7 @@ env
 .env
 document_portal.egg-info
 .vscode
+venv/
+__pycache__/
+*.pyc
+test.py
